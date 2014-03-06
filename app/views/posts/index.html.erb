@@ -4,6 +4,7 @@
   <tr>
     <td><strong>Title</strong></td>
     <td style="padding-left: 50px;"><strong>Text</strong></td>
+    <td style="padding-left: 50px;"><strong>User</strong></td>
 
   </tr>
  
@@ -11,9 +12,11 @@
     <tr>
       <td><%= post.title %></td>
       <td style="padding-left: 50px;"><%= post.text %></td>
+      <td style="padding-left: 50px;"><%= post.user %></td>
+
    	  <td><%= link_to "Show", post_path(post) %>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
-	  <td><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	    <td><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
  	
     </tr>
   <% end %>

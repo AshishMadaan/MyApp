@@ -7,6 +7,13 @@
   <strong>Text:</strong>
   <%= @post.text %>
 </p>
+<p>
+  <strong>User:</strong>
+  <%= @post.user %>
+</p>
+
+
+
 <%= link_to 'Edit', edit_post_path(@post) %>
 <%= link_to 'Back', posts_path %>
 
@@ -16,7 +23,7 @@
 
 
 <h3>Add a Comment </h3>
-<%= form_for([@post, @post.comments.build]) do |f| %>
+<%= form_for([@post, @post.comments.build], :html => {:multipart => true}) do |f| %>
 <p>
 	<%= f.label :commenter %><br/>
 	<%=f.text_field :commenter %>
@@ -25,6 +32,10 @@
 	<%= f.label :body %><br/>
 	<%=f.text_area :body %>
 </p>
+ <p>
+    <%= f.file_field :image%>
+  </p>
+
 <p>
 <%= f.submit %>
 </p>

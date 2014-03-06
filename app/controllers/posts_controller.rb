@@ -22,10 +22,27 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
+		
 		@post = Post.find(params[:id])
+		@comment = Comment.where(post_id: @post.id)
+		@comment.each do |comment|
+		  comment.destroy
+		end
 		@post.destroy
 		redirect_to @post
+
+		#@post = Post.find(params[:id])
+		#@comment = @post.comments.find(params[:id])
+		#@post.each do |post|
+		#@post.destroy
+		#redirect_to @post
+		#end
+	#@comment.destroy
+	#redirect_to @post
+
+
 	end
+	#@comment.destroy
 		
 	def edit
 		@post = Post.find(params[:id])
@@ -42,9 +59,9 @@ class PostsController < ApplicationController
 
 	end
 
-	#private
-	 # def post_params
-	  #  params.require(:post).permit(:title, :text)
-	 # end
+	private
+	  def post_params
+	    params.require(:post).permit(:title, :text, :user)
+	  end
 
 end
